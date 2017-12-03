@@ -1,43 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from '../contact';
-import { Posts } from '../posts';
-import { PostsService } from '../posts.service';
-
 @Component({
   selector: 'my-contacts',
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
-  posts: Posts[]=[];
-  contacts: Contact[] = [
-    {
-      name:"User",
-      surname:"1",
-      poster:"../../assets/icon1.jpg",
-      position:"korisnik"
-    },
-    {
-      name:"User",
-      surname:"2",
-      poster:"../../assets/icon1.jpg",
-      position:"korisnik"
-    },
-    {
-      name:"User",
-      surname:"2",
-      poster:"../../assets/icon1.jpg",
-      position:"korisnik"
-    },
-  ];
+  name;
+  surname;
+  position;
+  added:boolean=false;
+  newcontact:{name:string,  surname:string,  poster:string,  position:string};
 
-  constructor(private service: PostsService) { }
+  contacts: Contact[]=[];
+  constructor() { }
 
-  Random(){
-    this.service.getAll()
-    .subscribe(p => this.posts = p);
+  AddContact(){
+  this.newcontact={name:this.name,  surname:this.surname,  poster:"../../assets/icon1.jpg",  position:this.position};
+  this.contacts.push(this.newcontact)
+  localStorage.setItem("contacts", JSON.stringify(this.contacts))
+  this.added=true;
+  setTimeout(()=>{this.added = false},2000)
   }
+
   ngOnInit() {
+    this.contacts = JSON.parse(localStorage.getItem("contacts") || "[]");
   }
 
 }

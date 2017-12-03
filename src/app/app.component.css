@@ -14,8 +14,16 @@ nav a {
   text-decoration: none;
   margin-top: 10px;
   display: inline-block;
-  background-color: #eee;
   border-radius: 4px;
+}
+.navbar-brand{
+  color: rgb(9, 9, 77) !important;
+}
+.lead{
+  color: rgb(9, 9, 77) !important;
+}
+a{
+  color: rgb(9, 9, 77) !important;
 }
 nav a:visited, a:link {
   color: #607D8B;

@@ -1,5 +1,7 @@
 <h1 class="lead"><span class="display-4">Top Heroes</span></h1>
-<div class="grid grid-pad">
+<button class="btn btn-bg btn-primary" *ngIf="loading"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
+<br/>
+<div class="grid grid-pad" *ngIf="!loading">
   <div *ngFor="let hero of heroes" (click)="gotoDetail(hero)" class="col-1-5">
     <div class="module hero">
       <h4>{{hero.name}}</h4>
