@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from '../contact';
-import { Posts } from '../posts';
-import { PostsService } from '../posts.service';
-
 @Component({
   selector: 'my-contacts',
   templateUrl: './contacts.component.html',
@@ -12,25 +9,22 @@ export class ContactsComponent implements OnInit {
   name;
   surname;
   position;
+  added:boolean=false;
   newcontact:{name:string,  surname:string,  poster:string,  position:string};
-  posts: Posts[]=[];
-  loading:boolean=false;
-  contacts: Contact[]=[];
-  constructor(private service: PostsService) { }
 
-  Random(){
-    this.loading = true;
-    setTimeout(()=>{this.loading = false},1000)
-    this.service.getAll()
-    .subscribe(p => this.posts = p)
-  }
+  contacts: Contact[]=[];
+  constructor() { }
+
   AddContact(){
   this.newcontact={name:this.name,  surname:this.surname,  poster:"../../assets/icon1.jpg",  position:this.position};
   this.contacts.push(this.newcontact)
-  console.log(this.contacts)
+  localStorage.setItem("contacts", JSON.stringify(this.contacts))
+  this.added=true;
+  setTimeout(()=>{this.added = false},2000)
   }
 
   ngOnInit() {
+    this.contacts = JSON.parse(localStorage.getItem("contacts") || "[]");
   }
 
 }

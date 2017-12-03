@@ -56,38 +56,9 @@
       </div>
     </div>
   </div>
-
-
-
-<br/>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" (click)="Random()">
-    Generate Posts
-  </button>
-  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Posts</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <button class="btn btn-sm" *ngIf="loading"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
-            <div class="list-group" *ngIf="!loading">
-                <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let post of posts">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{post.title}}</h5>
-                    <small>{{post.id}}</small>
-                  </div>
-                  <p class="mb-1">{{post.body}}</p>
-                  <small>User Id:{{post.userId}}</small>
-                </div>
-              </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
+  <div class="alert alert-success" role="alert" *ngIf="added">
+    Contact successfully added!
   </div>
+
+
+  

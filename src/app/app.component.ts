@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'my-root',
   template: `
     
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+    <nav class="navbar navbar-toggleable-md navbar-inverse">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,6 +22,9 @@ import { Component } from '@angular/core';
         <li class="nav-item">
           <a class="nav-link" routerLink="/contacts" routerLinkActive="active">Contacts</a>
         </li>
+        <li class="nav-item ">
+        <a class="nav-link" routerLink="/posts" routerLinkActive="active">Posts</a>
+      </li>
       </ul>
     </div>
   </nav>

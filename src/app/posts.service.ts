@@ -6,15 +6,25 @@ import { Posts } from 'app/posts';
 
 @Injectable()
 export class PostsService {
-  UrlPosts='http://jsonplaceholder.typicode.com/posts'
+  UrlPosts='http://jsonplaceholder.typicode.com'
   constructor(private http : Http) { }
   
 
   getAll(): Observable<Posts[]>{
     let posts = this.http
-    .get(this.UrlPosts)
+    .get(this.UrlPosts+'/posts')
     .map(mapPosts);
     return posts;
+  }
+
+  save(posts: Posts) : Observable<Response>{
+    return this.http
+      .put(this.UrlPosts+'/posts', JSON.stringify(posts));
+  }
+  
+  delete(posts: Posts,id) : Observable<Response>{
+    return this.http
+    .delete(this.UrlPosts+'/posts/'+id, JSON.stringify(posts));
   }
 }
 
