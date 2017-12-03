@@ -25,7 +25,7 @@ export class ContactsComponent implements OnInit {
     },
     {
       name:"User",
-      surname:"2",
+      surname:"3",
       poster:"../../assets/icon1.jpg",
       position:"korisnik"
     },
