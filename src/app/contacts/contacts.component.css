@@ -4,3 +4,6 @@ h1 {
     color: #555;
     margin-bottom: 1em;
   }
+  button:hover {
+    background-color: #cfd8dc;
+  }

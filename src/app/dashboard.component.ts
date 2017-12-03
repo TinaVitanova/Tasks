@@ -12,12 +12,16 @@ import { HeroService } from './hero.service';
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
 
+  loading:boolean=false;
   constructor(
     private router: Router,
     private heroService: HeroService) {
   }
 
   ngOnInit(): void {
+
+    this.loading = true;
+    setTimeout(()=>{this.loading = false},1000)
     this.heroService.getHeroes()
       .then(heroes => this.heroes = heroes.slice(1, 5));
   }

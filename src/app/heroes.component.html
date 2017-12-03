@@ -1,6 +1,7 @@
 <h1 class="lead"><span class="display-4">My Heroes</span></h1>
-
-<ul class="heroes">
+<button class="btn btn-bg btn-primary" *ngIf="loading"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
+<br/>
+<ul class="heroes" *ngIf="!loading">
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
     <span class="hero-element">
       <span class="badge">{{hero.id}}</span> {{hero.name}}
@@ -8,9 +9,10 @@
     <button class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
   </li>
 </ul>
-
+ 
+<br/>
 <div class="error" *ngIf="error">{{error}}</div>
-<button (click)="addHero()">Add New Hero</button>
+<button class="btn btn-primary" (click)="addHero()">Add New Hero</button>
 <div *ngIf="addingHero">
   <my-hero-detail (close)="close($event)"></my-hero-detail>
 </div>
@@ -19,7 +21,7 @@
   <h2>
     {{selectedHero.name | uppercase}} is my hero
   </h2>
-  <button (click)="gotoDetail()">View Details</button>
+  <button class=" btn-success" (click)="gotoDetail()">View Details</button>
 </div>
 
 <div>
@@ -27,7 +29,7 @@
     .hidden { visibility: hidden}
   </style>
   <h4>ngFor Features</h4>
-  <button (click)="showNgFor=!showNgFor">{{showNgFor ? 'Hide' : 'Show'}} ngFor Features</button>
+  <button class="btn btn-primary" (click)="showNgFor=!showNgFor">{{showNgFor ? 'Hide' : 'Show'}} ngFor Features</button>
   <table [class.hidden]="!showNgFor">
     <tbody>
       <tr *ngFor="let hero of heroes; let ix = index; let c = count; let e = even; let o = odd; let f = first; let l = last">

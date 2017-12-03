@@ -15,12 +15,13 @@ export class HeroesComponent implements OnInit {
   addingHero = false;
   error: any;
   showNgFor = false;
-
+  loading:boolean=false;
   constructor(
     private router: Router,
     private heroService: HeroService) { }
 
   getHeroes(): void {
+
     this.heroService
       .getHeroes()
       .then(heroes => this.heroes = heroes)
@@ -49,6 +50,8 @@ export class HeroesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true;
+    setTimeout(()=>{this.loading = false},1000)
     this.getHeroes();
   }
 

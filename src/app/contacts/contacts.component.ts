@@ -9,34 +9,27 @@ import { PostsService } from '../posts.service';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
+  name;
+  surname;
+  position;
+  newcontact:{name:string,  surname:string,  poster:string,  position:string};
   posts: Posts[]=[];
-  contacts: Contact[] = [
-    {
-      name:"User",
-      surname:"1",
-      poster:"../../assets/icon1.jpg",
-      position:"korisnik"
-    },
-    {
-      name:"User",
-      surname:"2",
-      poster:"../../assets/icon1.jpg",
-      position:"korisnik"
-    },
-    {
-      name:"User",
-      surname:"3",
-      poster:"../../assets/icon1.jpg",
-      position:"korisnik"
-    },
-  ];
-
+  loading:boolean=false;
+  contacts: Contact[]=[];
   constructor(private service: PostsService) { }
 
   Random(){
+    this.loading = true;
+    setTimeout(()=>{this.loading = false},1000)
     this.service.getAll()
-    .subscribe(p => this.posts = p);
+    .subscribe(p => this.posts = p)
   }
+  AddContact(){
+  this.newcontact={name:this.name,  surname:this.surname,  poster:"../../assets/icon1.jpg",  position:this.position};
+  this.contacts.push(this.newcontact)
+  console.log(this.contacts)
+  }
+
   ngOnInit() {
   }
 
